@@ -3,11 +3,12 @@
   "version": "0.0.1",
   "description": "A collection of Node-RED media nodes that can be used with IBM Watson services",
   "dependencies": {
+    "easy-ffmpeg": "0.0.13",
+    "file-type": "^2.7.0",
     "request": "~2.53.0",
     "stream-to-array": "^2.3.0",
     "temp": "^0.8.3",
-    "file-type": "^2.7.0",
-    "easy-ffmpeg": "0.0.13"
+    "yauzl": "^2.6.0"
   },
   "license": "Apache-2.0",
   "keywords": [
@@ -23,7 +24,6 @@
     "type": "git",
     "url": "https://github.com/node-red-contrib-utils/node-red-contrib-media-utils"
   },
-  "license": "Apache-2.0",
   "contributors": [
     {
       "name": "Anna Thomas",
@@ -34,7 +34,8 @@
     "nodes": {
       "ffmpeg-conversion": "ffmpeg-conversion/ffmpeg-conversion.js",
       "ffmpeg-silence-detect": "ffmpeg-silence-detect/ffmpeg-silence-detect.js",
-      "ffmpeg-segment": "ffmpeg-segment/ffmpeg-segment.js"
+      "ffmpeg-segment": "ffmpeg-segment/ffmpeg-segment.js",
+      "unzip": "unzip/unzip.js"
     }
   }
 }
