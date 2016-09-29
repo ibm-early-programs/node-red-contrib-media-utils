@@ -1,0 +1,77 @@
+<!--
+  Copyright 2013,2015 IBM Corp.
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  http://www.apache.org/licenses/LICENSE-2.0
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<script type="text/x-red" data-template-name="ffmpeg-silence-detect">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-noise"><i class="fa fa-volume-up"></i> <span>Noise tolerance</span></label>
+        <input type="text" id="node-input-noise" style="width: calc(70% - 100px)">
+        <span>amplitude ratio</span>
+    </div>
+    <div class="form-row">
+        <label for="node-input-duration"><i class="fa fa-clock-o"></i> <span>Duration</span></label>
+        <input type="text" id="node-input-duration" style="width: calc(70% - 100px)">
+        <span>seconds</span>
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="ffmpeg-silence-detect">
+    <p>The FFmpeg node uses <a href="https://github.com/konsumer/easy-ffmpeg">easy-ffmpeg</a> to perform silence detection on <strong>audio</strong> files.</p>
+
+    <p>Supported <code>msg.payload</code> types:</p>
+
+    <ul>
+      <li><strong>String</strong> URL to audio</li>
+      <li><strong>Buffer</strong> Raw Audio Bytes</li>
+    </ul>
+
+    <p>Should support any audio input currently supported by FFmpeg. Full list found <a href="https://ffmpeg.org/general.html#File-Formats">here</a>.
+
+    <p>Returns a buffer of the audio data on <code>msg.payload</code>.</p>
+
+    <p>Currently been tested with:</p>
+    <ul>
+      <li><strong>WAV</strong></li>
+    </ul>
+
+    <p>This node performs <a href="https://ffmpeg.org/ffmpeg-filters.html#silencedetect">silence detection</a> provided by FFmpeg. This uses the options noise tolerance = 0.008 amplitude ratio and duration = 0.8 seconds by default.</p>
+
+    <p>Resulting silence start and end times (in seconds) will be returned as an array on <code>msg.silences</code>, eg. <code>[[0, 2], [5, 6]]</code>.</p>
+</script>
+
+<script type="text/javascript">
+    (function() {
+        RED.nodes.registerType('ffmpeg-silence-detect', {
+            category: 'function',
+            defaults: {
+                name: {value: ''},
+                noise: {value: 0.008},
+                duration: {value: 0.8}
+            },
+            color: 'rgb(245, 245, 245)',
+            inputs: 1,
+            outputs: 1,
+            icon: 'ffmpeg.png',
+            paletteLabel: 'ffmpeg silence detection',
+            label: function() {
+                return this.name || 'ffmpeg silence detection';
+            },
+            labelStyle: function() {
+                return this.name ? 'node_label_italic' : '';
+            }
+        });
+    })();
+</script>

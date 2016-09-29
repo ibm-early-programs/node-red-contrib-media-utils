@@ -1,0 +1,76 @@
+<!--
+  Copyright 2013,2015 IBM Corp.
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  http://www.apache.org/licenses/LICENSE-2.0
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<script type="text/x-red" data-template-name="ffmpeg-segment">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label>&nbsp;</label>
+        <input type="checkbox" id="node-input-timeout" style="display: inline-block; width: auto; vertical-align: top;">
+        <label for="node-input-timeout" style="width: 70%;"> Send split messages in order with delay</label>
+    </div>
+    <div class="form-tips" id="conversation-form-tips">
+      <strong>Note:</strong> Message delay will be equal to the length of the previous message in seconds.
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="ffmpeg-segment">
+    <p>The FFmpeg node uses <a href="https://github.com/konsumer/easy-ffmpeg">easy-ffmpeg</a> to split <strong>audio</strong> files.</p>
+
+    <p>Supported <code>msg.payload</code> types:</p>
+
+    <ul>
+      <li><strong>String</strong> URL to audio</li>
+      <li><strong>Buffer</strong> Raw Audio Bytes</li>
+    </ul>
+
+    <p>Should support any audio input currently supported by FFmpeg. Full list found <a href="https://ffmpeg.org/general.html#File-Formats">here</a>.
+
+    <p>Returns a buffer of the split data on <code>msg.payload</code>.</p>
+
+    <p>Currently been tested with:</p>
+    <ul>
+      <li><strong>WAV</strong></li>
+    </ul>
+
+    <p>This node splits the input into a number of segments. It splits the audio using times specified on <code>msg.times</code>, eg. <code>[5, 10]</code> will split the audio at 5 seconds and 10 seconds.</p>
+
+    <p>Each resulting segment will be sent as an individual message on <code>msg.payload</code> from the node. The timesplits of each segment will be available on <code>msg.timesplit</code>, eg. a timesplit of <code>[0, 5]</code> started at 0 and ended at 5 seconds in the original.</p>
+
+    <p>Checking the <strong>"Send split messages in order with delay"</strong> checkbox will add a delay between sending each message. This delay will be equal to the previous segments length in seconds. This allows you to play the segments through a speaker in the original order for testing purposes.</p>
+</script>
+
+<script type="text/javascript">
+    (function() {
+        RED.nodes.registerType('ffmpeg-segment', {
+            category: 'function',
+            defaults: {
+                name: {value: ''},
+                timeout: {value: false}
+            },
+            color: 'rgb(245, 245, 245)',
+            inputs: 1,
+            outputs: 1,
+            icon: 'ffmpeg.png',
+            paletteLabel: 'ffmpeg segment',
+            label: function() {
+                return this.name || 'ffmpeg segment';
+            },
+            labelStyle: function() {
+                return this.name ? 'node_label_italic' : '';
+            }
+        });
+    })();
+</script>

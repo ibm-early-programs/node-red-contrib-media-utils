@@ -1,0 +1,79 @@
+<!--
+  Copyright 2013,2015 IBM Corp.
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  http://www.apache.org/licenses/LICENSE-2.0
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<script type="text/x-red" data-template-name="ffmpeg-conversion">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-format"><i class="fa fa-volume-up"></i> Output</label>
+        <select type="text" id="node-input-format" style="width:70%;">
+            <option value="wav">wav</option>
+            <option value="flac">flac</option>
+            <option value="ogg">ogg</option>
+        </select>
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="ffmpeg-conversion">
+    <p>The FFmpeg node uses <a href="https://github.com/konsumer/easy-ffmpeg">easy-ffmpeg</a> to convert audio and video.</p>
+    <p>It can convert any audio or video streams supported by <a href="https://ffmpeg.org/">FFmpeg</a> into any supported audio format.</p>
+
+    <p>Supported <code>msg.payload</code> types:</p>
+
+    <ul>
+      <li><strong>String</strong> URL to audio or video</li>
+      <li><strong>Buffer</strong> Raw Audio Bytes</li>
+    </ul>
+
+    <p>Should support any audio or video input currently supported by FFmpeg. Full list found <a href="https://ffmpeg.org/general.html#File-Formats">here</a>.
+
+    <p>Supported output formats (audio only):</p>
+    <ul>
+      <li><strong>WAV</strong></li>
+      <li><strong>FLAC</strong></li>
+      <li><strong>OGG</strong></li>
+    </ul>
+
+    <p>Returns a buffer of the converted data on <code>msg.payload</code>.</p>
+
+    <p>Currently been tested with:</p>
+    <ul>
+      <li><strong>MP4</strong> to <strong>WAV/FLAC/OGG</strong></li>
+      <li><strong>WAV</strong> to <strong>WAV/FLAC/OGG</strong></li>
+    </ul>
+</script>
+
+<script type="text/javascript">
+    (function() {
+        RED.nodes.registerType('ffmpeg-conversion', {
+            category: 'function',
+            defaults: {
+                name: {value: ''},
+                format: {value: 'wav'}
+            },
+            color: 'rgb(245, 245, 245)',
+            inputs: 1,
+            outputs: 1,
+            icon: 'ffmpeg.png',
+            paletteLabel: 'ffmpeg conversion',
+            label: function() {
+                return this.name || 'ffmpeg conversion';
+            },
+            labelStyle: function() {
+                return this.name ? 'node_label_italic' : '';
+            }
+        });
+    })();
+</script>
