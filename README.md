@@ -83,6 +83,27 @@ Each resulting segment will be sent as an individual message on `msg.payload` fr
 
 Checking the "Send split messages in order with delay" checkbox will add a delay between sending each message. This delay will be equal to the previous segments length in seconds. This allows you to play the segments through a speaker in the original order for testing purposes.
 
+### Unzip
+
+Unzips a `.zip` folder into separate files. 
+
+The node requires a `.zip` input file and will output the contents on the node's `msg.payload` object. 
+
+Supported msg.payload types:
+
+* `.zip` file
+
+Output types: 
+
+* A separate `buffer` for each of the files contained within the input folder. 
+
+
+#### Gotchas
+
+Please note that currently the node returns a buffer of all the files contained in the `.zip` including any dotfiles. 
+
+
+
 ## Contributing
 
 For simple typos and fixes please just raise an issue pointing out our mistakes. If you need to raise a pull request please read our [contribution guidelines](https://github.com/node-red-contrib-utils/node-red-contrib-media-utils/blob/master/CONTRIBUTING.md) before doing so.
