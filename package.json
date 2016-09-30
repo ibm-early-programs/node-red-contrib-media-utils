@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-media-utils",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A collection of Node-RED media nodes that can be used with IBM Watson services",
   "dependencies": {
     "easy-ffmpeg": "0.0.13",
@@ -22,12 +22,16 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/node-red-contrib-utils/node-red-contrib-media-utils"
+    "url": "https://github.com/ibm-early-programs/node-red-contrib-media-utils"
   },
   "contributors": [
     {
       "name": "Anna Thomas",
       "email": "annaet@uk.ibm.com"
+    },
+    {
+      "name": "Chris Parson",
+      "email": "chrisparsons@uk.ibm.com"
     }
   ],
   "node-red": {

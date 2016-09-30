@@ -106,7 +106,7 @@ Please note that currently the node returns a buffer of all the files contained 
 
 ## Contributing
 
-For simple typos and fixes please just raise an issue pointing out our mistakes. If you need to raise a pull request please read our [contribution guidelines](https://github.com/node-red-contrib-utils/node-red-contrib-media-utils/blob/master/CONTRIBUTING.md) before doing so.
+For simple typos and fixes please just raise an issue pointing out our mistakes. If you need to raise a pull request please read our [contribution guidelines](https://github.com/ibm-early-programs/node-red-contrib-media-utils/blob/master/CONTRIBUTING.md) before doing so.
 
 ## Copyright and license
 
