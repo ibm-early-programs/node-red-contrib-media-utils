@@ -24,6 +24,14 @@
             <option value="ogg">ogg</option>
         </select>
     </div>
+    <div class="form-row">
+        <label for="node-input-audiochannels"><i class="fa fa-play"></i> Output</label>
+        <select type="text" id="node-input-audiochannels" style="width:70%;">
+            <option value="mono">mono</option>
+            <option value="stereo">stereo</option>
+        </select>
+    </div>
+
 </script>
 
 <script type="text/x-red" data-help-name="ffmpeg-conversion">
@@ -46,6 +54,8 @@
       <li><strong>OGG</strong></li>
     </ul>
 
+    <p>You can request the audio outupt as either Mono or Stereo.</p>
+
     <p>Returns a buffer of the converted data on <code>msg.payload</code>.</p>
 
     <p>Currently been tested with:</p>
@@ -61,7 +71,8 @@
             category: 'function',
             defaults: {
                 name: {value: ''},
-                format: {value: 'wav'}
+                format: {value: 'wav'},
+                audiochannels: {value: 'mono'},
             },
             color: 'rgb(245, 245, 245)',
             inputs: 1,
