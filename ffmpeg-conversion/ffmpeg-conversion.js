@@ -125,6 +125,14 @@ module.exports = function (RED) {
             readFileToBuffer(info.path, nodeSend);
           };
 
+
+          var numChannels = 1;
+          var frequency = 22050;
+          if (config.audiochannels && config.audiochannels == 'stereo') {
+            numChannels = 2;
+            frequency = 48000;
+          }
+
           if (ext === '.' + config.format) {
             readFileToBuffer(pathToFile, nodeSend);
           } else {
@@ -132,6 +140,8 @@ module.exports = function (RED) {
             ffmpeg(pathToFile)
               .format(config.format)
               .noVideo()
+              .audioChannels(numChannels)
+              .audioFrequency(frequency)
               .on('start', conversionStart)
               .on('error', conversionError)
               .on('end', conversionEnd)
