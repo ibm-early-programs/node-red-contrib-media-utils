@@ -1,7 +1,7 @@
 {
-  "name": "node-red-contrib-media-utils",
+  "name": "node-red-contrib-media-utils-plus",
   "version": "0.0.3",
-  "description": "A collection of Node-RED media nodes that can be used with IBM Watson services",
+  "description": "A collection of Node-RED media nodes that can be used with IBM Watson services, forked from node-red-contrib-media-utils",
   "dependencies": {
     "easy-ffmpeg": "0.0.13",
     "file-type": "^2.7.0",
