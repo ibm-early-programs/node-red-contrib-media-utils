@@ -19,6 +19,7 @@
     <div class="form-row">
         <label for="node-input-format"><i class="fa fa-volume-up"></i> Output</label>
         <select type="text" id="node-input-format" style="width:70%;">
+            <option value="mp3">mp3</option>
             <option value="wav">wav</option>
             <option value="flac">flac</option>
             <option value="ogg">ogg</option>
@@ -49,6 +50,7 @@
 
     <p>Supported output formats (audio only):</p>
     <ul>
+      <li><strong>MP3</strong></li>
       <li><strong>WAV</strong></li>
       <li><strong>FLAC</strong></li>
       <li><strong>OGG</strong></li>
@@ -62,8 +64,8 @@
 
     <p>Currently been tested with:</p>
     <ul>
-      <li><strong>MP4</strong> to <strong>WAV/FLAC/OGG</strong></li>
-      <li><strong>WAV</strong> to <strong>WAV/FLAC/OGG</strong></li>
+      <li><strong>MP4</strong> to <strong>MP3/WAV/FLAC/OGG</strong></li>
+      <li><strong>WAV</strong> to <strong>MP3/WAV/FLAC/OGG</strong></li>
     </ul>
 </script>
 
@@ -73,7 +75,7 @@
             category: 'function',
             defaults: {
                 name: {value: ''},
-                format: {value: 'wav'},
+                format: {value: 'mp3'},
                 audiochannels: {value: 'mono'},
             },
             color: 'rgb(245, 245, 245)',
