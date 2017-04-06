@@ -37,6 +37,10 @@ module.exports = function (RED) {
 
     this.on('input', function (msg) {
       var message;
+      
+      if (msg.format) {
+        config.format = msg.format;
+      }
 
       // Return error and clean up
       function nodeError(nodeText, debugMsg) {
