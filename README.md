@@ -26,6 +26,7 @@ Should support any audio or video input currently supported by FFmpeg. Full list
 
 Supported output formats (audio only):
 
+* MP3
 * WAV
 * FLAC
 * OGG
@@ -34,8 +35,8 @@ Returns a buffer of the converted data on `msg.payload`.
 
 Currently been tested with:
 
-* MP4 to WAV/FLAC/OGG
-* WAV to WAV/FLAC/OGG
+* MP4 to MP3/WAV/FLAC/OGG
+* WAV to MP3/WAV/FLAC/OGG
 
 ### FFmpeg Silence Detection
 
