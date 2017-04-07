@@ -26,7 +26,7 @@ Should support any audio or video input currently supported by FFmpeg. Full list
 
 Supported output formats (audio only):
 
-* MP3
+* MP3 (not supported as input to Watson Speech to Text)
 * WAV
 * FLAC
 * OGG
@@ -86,22 +86,22 @@ Checking the "Send split messages in order with delay" checkbox will add a delay
 
 ### Unzip
 
-Unzips a `.zip` folder into separate files. 
+Unzips a `.zip` folder into separate files.
 
-The node requires a `.zip` input file and will output the contents on the node's `msg.payload` object. 
+The node requires a `.zip` input file and will output the contents on the node's `msg.payload` object.
 
 Supported msg.payload types:
 
 * `.zip` file
 
-Output types: 
+Output types:
 
-* A separate `buffer` for each of the files contained within the input folder. 
+* A separate `buffer` for each of the files contained within the input folder.
 
 
 #### Gotchas
 
-Please note that currently the node returns a buffer of all the files contained in the `.zip` including any dotfiles. 
+Please note that currently the node returns a buffer of all the files contained in the `.zip` including any dotfiles.
 
 
 
