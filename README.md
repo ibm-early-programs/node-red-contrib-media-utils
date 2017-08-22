@@ -32,7 +32,7 @@ Supported output formats (audio only):
 * OGG
 
 Additional output formats can be specified by setting `msg.format`. mp4 video output
-has been tested, but setting `msg.format='mp4'``
+has been tested, by setting `msg.format='mp4'`
 
 Returns a buffer of the converted data on `msg.payload`.
 
