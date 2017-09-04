@@ -144,7 +144,9 @@ module.exports = function (RED) {
             var stream  = fs.createWriteStream(info.path);
             ffmpeg(pathToFile)
               .format(config.format)
-              .noVideo()
+              // Take out the no video option as that defeats the purpose.
+              //.noVideo()
+              //
               // If Video is required then this set of 3 options works for MP4
               // with msg.format ='mp4'
               // Also doesn't appear to harm audio options so keeping it in
