@@ -37,7 +37,7 @@ module.exports = function (RED) {
 
     this.on('input', function (msg) {
       var message;
-      
+
       if (msg.format) {
         config.format = msg.format;
       }
@@ -120,7 +120,8 @@ module.exports = function (RED) {
               text:'converting'});
           };
 
-          var conversionError = function() {
+          var conversionError = function(err) {
+            console.log(err)
             nodeError('ffmpeg conversion failed', 'FFmpeg failed to perform the conversion');
           };
 
@@ -144,6 +145,14 @@ module.exports = function (RED) {
             ffmpeg(pathToFile)
               .format(config.format)
               .noVideo()
+              // If Video is required then this set of 3 options works for MP4
+              // with msg.format ='mp4'
+              // Also doesn't appear to harm audio options so keeping it in
+              // until someone complains.
+              .outputOptions('-c:v libx264')
+              .outputOptions('-pix_fmt yuv420p')
+              .outputOptions('-movflags frag_keyframe+empty_moov')
+              //
               .audioChannels(numChannels)
               .audioFrequency(frequency)
               .on('start', conversionStart)
